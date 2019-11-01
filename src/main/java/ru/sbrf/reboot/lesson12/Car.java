@@ -18,7 +18,12 @@ public class Car {
 
     public void engineStart(){
         if (!isEngineStarted) {
-            if(isAlarmActive) triggerAlarm();
+            System.out.println("Starting engine on " + this);
+            if(isAlarmActive) {
+                System.out.println("Alarm is " + isAlarmActive);
+                triggerAlarm();
+            }
+            System.out.println("Alarm is " + isAlarmActive);
             isEngineStarted = true;
         }
     }
@@ -28,7 +33,9 @@ public class Car {
     }
 
     public void triggerAlarm() {
-        isAlarmActive = !isAlarmActive;
+        if(!this.getClass().equals(Car.class) && isAlarmActive) System.out.println(this.getClass() + " can not turn the alarm off!");
+        else isAlarmActive = !isAlarmActive;
+        System.out.println("Alarm is triggered and now is " + isAlarmActive);
     }
 
     private boolean checkEngineStatus(boolean status) {
